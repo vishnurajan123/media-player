@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getHistory } from '../services/allAPI'
+import { deleteHistory, getHistory } from '../services/allAPI'
 function WatchHistory() {
-
+  const [deleteSpecificistory,setDeleteSpecificHistory]=useState(false)
   const [history,setHistory]=useState([])
   const getAllwatchHistory=async ()=>{
     // make api call
@@ -12,9 +12,18 @@ function WatchHistory() {
   }
 
   useEffect(()=>{
+    setDeleteSpecificHistory(false)
     getAllwatchHistory()
-  },[])
+  },[deleteSpecificistory])
   console.log(history);
+
+  const removeHistory= async (id)=>{
+    // make api call
+    const response=await deleteHistory(id)
+    setDeleteSpecificHistory(true)
+    
+  
+  }
 
   return (
    <p>
@@ -41,12 +50,15 @@ function WatchHistory() {
               <td>{item?.caption}</td>
               <td><Link to={item?.embedlink} target='_blank'>{item?.embedlink}</Link></td>
               <td>{item?.timeStamp}</td>
+              <td><button onClick={()=>removeHistory(item?.id)} className='btn'><div className="fa-solid fa-trash text-danger"></div></button>
+        </td>
             </tr>
               ))
               :<p className='fw-bolder mt-3 fs-5 text-danger'>There are no Uploaded Videos</p>
 
             }
           </tbody>
+          
         </table>
       </div>
    </p>

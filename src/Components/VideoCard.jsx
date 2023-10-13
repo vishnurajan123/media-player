@@ -4,7 +4,7 @@ import { addHistory, deleteAVideo } from '../services/allAPI';
 
 
 
-function VideoCard({displayData,setDeleteSpecificVideo}) {
+function VideoCard({displayData,setDeleteSpecificVideo,insideCategory}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -30,16 +30,23 @@ const removeVedio= async (id)=>{
 
 }
 
+const dragStarted=(e,id)=>{
+  console.log("Drag started");
+  e.dataTransfer.setData("CardId",id)
+}
+
   return (
     <>
     {
       displayData &&
-      <Card className='mb-4'>
+      <Card className='mb-4' draggable onDragStart={(e)=>dragStarted(e,displayData?.id)}>
       <Card.Img style={{height:"180px"}} onClick={handleShow} variant="top" src={displayData?.url} />
       <Card.Body>
         <Card.Title className='d-flex justify-content-between align-items-center'>
           <h6>{displayData?.caption}</h6>
-          <button onClick={()=>removeVedio(displayData?.id)} className='btn'><div className="fa-solid fa-trash text-danger"></div></button>
+
+{        insideCategory?"":  <button onClick={()=>removeVedio(displayData?.id)} className='btn'><div className="fa-solid fa-trash text-danger"></div></button>
+}        
         </Card.Title>
         
       </Card.Body>

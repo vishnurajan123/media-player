@@ -33,8 +33,41 @@ export const addHistory= async (videoHIstory)=>{
     return await commonAPI("POST",`${serverURL}/history`,videoHIstory)
 }
 
-// store video watching history to json server 
+// get video watching history 
 export const getHistory= async ()=>{
     // call get http request to http://localhost:4000/history to get all video history in json server return response to videocard component
     return await commonAPI("GET",`${serverURL}/history`,"")
 }
+
+// delete video watching history
+export const deleteHistory= async (id)=>{
+    // call delete http request to http://localhost:4000/history to delete a video history in json server return response to watchhistory component
+    return await commonAPI("DELETE",`${serverURL}/history/${id}`,{})
+}
+
+
+// add category to json server
+export const saveCategory= async (body)=>{
+   // call post http request to http://localhost:4000/category to add category in json server return response to category component
+    return await commonAPI("POST",`${serverURL}/categories`,body)
+}
+
+// get category from json server
+export const getCategory= async ()=>{
+    // call get http request to http://localhost:4000/category to get category from json server return response to category component
+     return await commonAPI("GET",`${serverURL}/categories`,"")
+ }
+
+ // get category from json server
+export const deleteCategory= async (id)=>{
+    // call delete http request to http://localhost:4000/category to delete a category from json server return response to category component
+     return await commonAPI("DELETE",`${serverURL}/categories/${id}`,{})
+ }
+
+ // update category from json server
+export const updateCategory= async (id,body)=>{
+    // call put http request to http://localhost:4000/category/id to update a category from json server return response to category component
+     return await commonAPI("PUT",`${serverURL}/categories/${id}`,body)
+ }
+ 
+

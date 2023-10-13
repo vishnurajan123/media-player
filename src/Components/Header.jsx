@@ -8,7 +8,7 @@ function Header() {
           <Navbar.Brand >
             <Link to={'/'} className='fs-4' style={{textDecoration:"none",color:"white"}}>
             <i className="fa-solid fa-upload"></i>{' '}
-            React Bootstrap
+            Media Player
             </Link>
          
           </Navbar.Brand>
