@@ -44,7 +44,7 @@ function WatchHistory() {
           <tbody>
             {
               history?.length>0?
-              history.map((item,index)=>(
+              history?.map((item,index)=>(
                 <tr>
               <td>{index+1}</td>
               <td>{item?.caption}</td>
@@ -54,7 +54,7 @@ function WatchHistory() {
         </td>
             </tr>
               ))
-              :<p className='fw-bolder mt-3 fs-5 text-danger'>There are no Uploaded Videos</p>
+              :<p className='fw-bolder mt-3 fs-5 text-danger'>Nothing to display</p>
 
             }
           </tbody>

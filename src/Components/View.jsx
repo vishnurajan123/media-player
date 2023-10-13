@@ -22,7 +22,7 @@ function View({uploadVideoServerResponse}) {
     <Row>
       {
         allVideos?.length>0?
-        allVideos.map(video=>(
+        allVideos?.map(video=>(
 
       <Col sm={12} md={6} lg={4} xl={3}>
        

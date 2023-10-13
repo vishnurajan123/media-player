@@ -77,7 +77,7 @@ const handleDeleteCategory=async (id)=>{
         
 </div>
       {
-        allCategory.length>0?allCategory?.map(item=>(
+        allCategory?.length>0?allCategory?.map(item=>(
           <div className="border mt-3 mb-3 p-3 rounded" droppable onDragOver={(e)=>dragOver(e)} onDrop={(e)=>videoDropped(e,item?.id)}>
             <div className="d-flex justify-content-between align-items center">
               <h6>{item?.categoryName}</h6>
@@ -87,7 +87,7 @@ const handleDeleteCategory=async (id)=>{
               item?.allCideos&&
               <Row>
                 {
-                  item?.allCideos.map(card=>(
+                  item?.allCideos?.map(card=>(
                     <Col sm={12}>
                       <VideoCard displayData={card} insideCategory={true}/>
                     </Col>
